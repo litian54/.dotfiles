@@ -57,7 +57,7 @@ chsh -s /bin/zsh
 
 # Override .zpreztorc
 prezto_override="$DOTFILES_DIR/home/zsh/prezto-override/zpreztorc"
-[[ -d ${prezto_override} ]] && ln -nfs ${prezto_override} "${ZDOTDIR:-$HOME}/.zpreztorc"
+[[ -f ${prezto_override} ]] && ln -nfs ${prezto_override} "${ZDOTDIR:-$HOME}/.zpreztorc"
 
 # ==================== Tmux =====================
 tmux="$DOTFILES_DIR/home/tmux/tmux.conf"
