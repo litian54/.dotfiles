@@ -1,0 +1,6 @@
+[submodule "home/zsh/prezto"]
+	path = home/zsh/prezto
+	url = https://github.com/sorin-ionescu/prezto.git
+[submodule "fonts"]
+	path = fonts
+	url = https://github.com/powerline/fonts.git
