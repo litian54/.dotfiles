@@ -45,26 +45,36 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 
 
-# ================ Link files ============
+# ======================== Link files ============================
 echo "Linking dotfiles..."
 
+# ===================== Prezto ======================
 prezto="$DOTFILES_DIR/home/zsh/prezto"
 [[ -d ${prezto} ]] && ln -nfs ${prezto} ${ZDOTDIR:-$HOME}/.zprezto
 zsh=$(which zsh)
 zsh -x "$DOTFILES_DIR/install/prezto.zsh"
 chsh -s /bin/zsh
 
-tmux="$DOTFILES_DIR/home/tmux/tmux.conf"
-[[ -f ${tmux} ]] && ln -nfs ${tmux} $HOME/.tmux.conf
-
-vimrc="$DOTFILES_DIR/home/vim/vimrc"
-[[ -f ${vimrc} ]] && ln -nfs ${vimrc} $HOME/.vimrc
-
-gitconfig="$DOTFILES_DIR/home/git/gitconfig"
-[[ -f ${gitconfig} ]] && ln -nfs ${gitconfig} $HOME/.gitconfig
-
 # Override .zpreztorc
 prezto_override="$DOTFILES_DIR/home/zsh/prezto-override/zpreztorc"
 [[ -d ${prezto_override} ]] && ln -nfs ${prezto_override} "${ZDOTDIR:-$HOME}/.zpreztorc"
+
+# ==================== Tmux =====================
+tmux="$DOTFILES_DIR/home/tmux/tmux.conf"
+[[ -f ${tmux} ]] && ln -nfs ${tmux} $HOME/.tmux.conf
+
+# ===================== Vim ======================
+# vimrc
+vimrc="$DOTFILES_DIR/home/vim/vimrc"
+[[ -f ${vimrc} ]] && ln -nfs ${vimrc} $HOME/.vimrc
+
+# Vundles
+vundle="$DOTFILES_DIR/home/vim/vundles.vim"
+mkdir -p ~/.vim && ln -nfs ${vundle} ~/.vim/vundles.vim
+vim -E -u $HOME/.vimrc +qall
+
+# ========================= Git ======================
+gitconfig="$DOTFILES_DIR/home/git/gitconfig"
+[[ -f ${gitconfig} ]] && ln -nfs ${gitconfig} $HOME/.gitconfig
 
 echo "Installation Completed!"
