@@ -1,3 +1,11 @@
+" ====================================================
+"
+" Author: Tian Li
+"
+" https://github.com/litian54/dotfiles
+"
+" ====================================================
+
 " no vi-compatible
 set nocompatible
 

@@ -5,7 +5,7 @@ export DOTFILES_DIR
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Update dotfiles itself first
-[ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master --recursive
+[ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
 # Init and update submodules
 # Init
@@ -18,7 +18,7 @@ git submodule update --recursive
 
 echo "Installing apps..."
 # OS detect
-unamestr=`uname`
+unamestr=$(uname)
 # ================ Linuxi(Ubuntu) ================
 if [[ "$unamestr" == 'Linux' ]]; then
     . "$DOTFILES_DIR/install/apt-get.sh"
@@ -26,8 +26,8 @@ if [[ "$unamestr" == 'Linux' ]]; then
 
 # ================ macOS ================
 elif [[ "$unamestr" == 'Darwin' ]]; then
-    . "$DOTFILES_DIR/install/brew.sh"
-    . "$DOTFILES_DIR/install/pip.sh"
+#    . "$DOTFILES_DIR/install/brew.sh"
+#    . "$DOTFILES_DIR/install/pip.sh"
 
     # Install iTerm2 theme
     profile_dir="$HOME/Library/Application\ Support/iTerm2/DynamicProfiles"
@@ -50,6 +50,9 @@ echo "Linking dotfiles..."
 
 prezto="$DOTFILES_DIR/home/zsh/prezto"
 [[ -d ${prezto} ]] && ln -nfs ${prezto} ${ZDOTDIR:-$HOME}/.zprezto
+zsh=$(which zsh)
+zsh -x "$DOTFILES_DIR/install/prezto.zsh"
+chsh -s /bin/zsh
 
 tmux="$DOTFILES_DIR/home/tmux/tmux.conf"
 [[ -f ${tmux} ]] && ln -nfs ${tmux} $HOME/.tmux.conf
@@ -60,14 +63,8 @@ vimrc="$DOTFILES_DIR/home/vim/vimrc"
 gitconfig="$DOTFILES_DIR/home/git/gitconfig"
 [[ -f ${gitconfig} ]] && ln -nfs ${gitconfig} $HOME/.gitconfig
 
-# Setup Prezto(zsh)
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
-
-chsh -s /bin/zsh
-
 # Override .zpreztorc
 prezto_override="$DOTFILES_DIR/home/zsh/prezto-override/zpreztorc"
 [[ -d ${prezto_override} ]] && ln -nfs ${prezto_override} "${ZDOTDIR:-$HOME}/.zpreztorc"
+
+echo "Installation Completed!"
