@@ -1,4 +1,9 @@
+#!/usr/bin/env bash
 # Install Homebrew
+
+echo "============================================"
+echo " Run brew install && brew cask install ... "
+echo "============================================"
 
 # Check for Homebrew,
 # Install if we don't have it
@@ -25,10 +30,12 @@ formulae=(
   findutils
   git
   go
+  gotags
   jq
   lua
   luajit
   macvim
+  npm
   pdsh
   python
   python3

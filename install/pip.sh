@@ -1,1 +1,7 @@
-pip install -r ./requirements.txt
+#!/usr/bin/env bash
+
+echo "============================================"
+echo "Run pip install..."
+echo "============================================"
+
+command -v pip >/dev/null 2>&1 && pip install -r ./requirements.txt
