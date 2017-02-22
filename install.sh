@@ -26,8 +26,8 @@ if [[ "$unamestr" == 'Linux' ]]; then
 
 # ================ macOS ================
 elif [[ "$unamestr" == 'Darwin' ]]; then
-#    . "$DOTFILES_DIR/install/brew.sh"
-#    . "$DOTFILES_DIR/install/pip.sh"
+    . "$DOTFILES_DIR/install/brew.sh"
+    . "$DOTFILES_DIR/install/pip.sh"
     . "$DOTFILES_DIR/install/iTerm2.sh"
     . "$DOTFILES_DIR/install/macOS-terminal.sh"
 fi

@@ -54,7 +54,7 @@ casks=(
   java
   qq
   vagrant
-#  virtualbox
+  virtualbox
   youdao
 )
 
