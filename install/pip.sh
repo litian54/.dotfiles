@@ -4,4 +4,4 @@ echo "============================================"
 echo "Run pip install..."
 echo "============================================"
 
-command -v pip >/dev/null 2>&1 && pip install -r ./requirements.txt
+command -v pip >/dev/null 2>&1 && pip install -r "$DOTFILES_DIR/install/requirements.txt"
