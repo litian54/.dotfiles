@@ -56,6 +56,7 @@ casks=(
   vagrant
   virtualbox
   youdao
+  appcleaner
 )
 
 # brew tap | grep "cask" > /dev/null || brew tap caskroom/homebrew-cask
