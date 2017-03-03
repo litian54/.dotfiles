@@ -4,7 +4,7 @@ echo "============================================"
 echo "Setup iTerm2 theme and profiles..."
 echo "============================================"
 
-profile_dir="$HOME/Library/Application\ Support/iTerm2/DynamicProfiles"
+profile_dir="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
 mkdir -p "$profile_dir"
 /usr/libexec/PlistBuddy -c "Add :'Custom Color Presets':'Gruvbox-dark' dict" ~/Library/Preferences/com.googlecode.iterm2.plist
 /usr/libexec/PlistBuddy -c "Merge 'home/iTerm2/gruvbox-dark.itermcolors' :'Custom Color Presets':'Gruvbox-dark'" ~/Library/Preferences/com.googlecode.iterm2.plist
