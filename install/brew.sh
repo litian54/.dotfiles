@@ -22,6 +22,7 @@ brew update
 brew upgrade
 
 formulae=(
+  boost
   cmake
   ctags
   csshx
@@ -29,18 +30,24 @@ formulae=(
   caskroom/cask/brew-cask
   findutils
   git
+  gnupg
   go
   gotags
+  highlight
+  iperf
   jq
   lua
   luajit
   macvim
   npm
+  openssl
+  p11-kit
   pdsh
   python
   python3
   ruby
   reattach-to-user-namespace
+  telnet
   tree
   tmux
   vim
@@ -49,14 +56,20 @@ formulae=(
 )
 
 casks=(
+  appcleaner
+  firefox
   google-chrome
   iterm2
-  java
+  java8
+  mplayerx
   qq
+  spectacle
+  sublime-text
+  the-unarchiver
   vagrant
   virtualbox
+  wireshark
   youdao
-  appcleaner
 )
 
 # brew tap | grep "cask" > /dev/null || brew tap caskroom/homebrew-cask
@@ -73,5 +86,5 @@ done
 
 # brew cleanup
 # brew cask cleanup
-# 
+#
 # brew reinstall macvim --HEAD --with-cscope --with-lua --with-override-system-vim
